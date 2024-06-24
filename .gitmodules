@@ -1,0 +1,3 @@
+[submodule "labelme"]
+	path = labelme
+	url = https://github.com/labelmeai/labelme.git

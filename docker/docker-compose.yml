@@ -1,0 +1,36 @@
+# use docker-compose
+version: '3.8'
+services:
+  anylabeling:
+    image: eachan10/anylabeling-deploy:latest
+    shm_size: '64gb'
+    container_name: anylabeling-deploy
+    stdin_open: true # keeps the standard input of the container open and allows interaction with the terminal.
+    tty: true # allocates a pseudo-TTY for the container, which is required for running interactive shell commands in the container.
+    volumes: # Mount the following volumes in the container
+      - type: bind # Bind mount the host directory into the container
+        source: /home/yichen/my_prjs/anylabeling-deploy
+        target: /root/anylabeling-deploy
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /mnt/wslg:/mnt/wslg
+      - /usr/lib/wsl:/usr/lib/wsl
+    environment: # Set the following environment variables in the container
+      - DISPLAY=$DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - WAYLAND_DISPLAY=$WAYLAND_DISPLAY
+      - PULSE_SERVER=$PULSE_SERVER
+      - XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR
+      - LD_LIBRARY_PATH=/usr/lib/wsl/lib
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=graphics,utility,compute
+      - NVIDIA_DISABLE_REQUIRE=true
+    deploy:
+        resources:
+            reservations:
+                devices:
+                    - driver: nvidia
+                      capabilities: [gpu]
+    devices: # Add the following devices to the container
+      - /dev/dxg
+    network_mode: host # Use the host network stack for the container
+    command: zsh
