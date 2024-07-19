@@ -1,9 +1,18 @@
 
-# AnyLabeling GPU Docker Deployment with LabelMe VOC Export Support
+# [X-AnyLabeling](https://github.com/CVHub520/X-AnyLabeling) Deployment with LabelMe VOC Export Support
+## Quick Start
+- add the dataset path in docker-compose.yml
+- for dependencies installation, please check the [Dockerfile_x](Dockerfile_x)
+```bash
+cd docker && docker-compose up
+```
+## Modified Features for X-AnyLabeling
+- **Change to GPU:** et the __preferred_device__ field to GPU in the [app_info.py](X-AnyLabeling/anylabeling/app_info.py) configuration file.
+- **Change installation url for `onnxruntime-gpu`:** Install from ORT Azure to make it compatible with the CUDA 12.X.
 
+# AnyLabeling GPU Docker Deployment with LabelMe VOC Export Support
 ## Introduction
 This project extends the [AnyLabeling](https://github.com/vietanhdev/anylabeling) tool by deploying it using Docker containers specifically optimized for GPU environments. Additionally, I've implemented a feature to export annotations to the VOC format using LabelMe, enhancing the interoperability with other computer vision tools and frameworks.
-
 ## Features
 - **Dockerized AnyLabeling**: Simplifies the deployment of AnyLabeling using Docker, ensuring easy scalability and maintenance.
 - **LabelMe to VOC Export**: Adds the capability to export annotations from LabelMe to the VOC format, which is widely used in the field of computer vision for tasks like object detection and semantic segmentation.

@@ -1,3 +1,6 @@
 [submodule "labelme"]
 	path = labelme
 	url = https://github.com/labelmeai/labelme.git
+[submodule "X-AnyLabeling"]
+	path = X-AnyLabeling
+	url = git@github.com:Ea510chan/X-AnyLabeling.git

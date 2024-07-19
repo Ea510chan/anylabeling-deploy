@@ -1,10 +1,10 @@
 # use docker-compose
 version: '3.8'
 services:
-  anylabeling:
-    image: eachan10/anylabeling-deploy:latest
+  x-anylabeling:
+    image: eachan10/x-anylabeling:latest
     shm_size: '64gb'
-    container_name: anylabeling-deploy
+    container_name: x-anylabeling
     stdin_open: true # keeps the standard input of the container open and allows interaction with the terminal.
     tty: true # allocates a pseudo-TTY for the container, which is required for running interactive shell commands in the container.
     volumes: # Mount the following volumes in the container
@@ -33,4 +33,6 @@ services:
     devices: # Add the following devices to the container
       - /dev/dxg
     network_mode: host # Use the host network stack for the container
-    command: zsh
+    # command: zsh
+    command: >
+      sh -c "python /root/anylabeling-deploy/X-AnyLabeling/anylabeling/app.py && zsh"
