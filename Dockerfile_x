@@ -62,9 +62,6 @@ COPY . /root/anylabeling-deploy
 # Set the working directory
 WORKDIR /root/anylabeling-deploy
 
-# Verify the copied directories
-RUN ls -la /root/anylabeling-deploy
-
 # Install project dependencies
 RUN pip install -r X-AnyLabeling/requirements-gpu-cu12.txt \
     && pip install onnxruntime-gpu --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/ \

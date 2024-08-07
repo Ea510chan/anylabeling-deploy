@@ -11,6 +11,9 @@ services:
       - type: bind # Bind mount the host directory into the container
         source: /home/yichen/my_prjs/anylabeling-deploy
         target: /root/anylabeling-deploy
+      - type: bind # Bind mount the host directory into the container
+        source: /home/yichen/datasets
+        target: /root/datasets
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /mnt/wslg:/mnt/wslg
       - /usr/lib/wsl:/usr/lib/wsl
