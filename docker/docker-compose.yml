@@ -2,7 +2,7 @@
 version: '3.8'
 services:
   x-anylabeling:
-    image: eachan10/x-anylabeling:latest
+    image: eachan10/x-anylabeling:sam2
     shm_size: '64gb'
     container_name: x-anylabeling
     stdin_open: true # keeps the standard input of the container open and allows interaction with the terminal.
@@ -37,5 +37,9 @@ services:
       - /dev/dxg
     network_mode: host # Use the host network stack for the container
     # command: zsh
-    command: >
-      sh -c "python /root/anylabeling-deploy/X-AnyLabeling/anylabeling/app.py && zsh"
+    command:  # Run the command "zsh" in the container/home/yichen/my_prjs/collaborative_exploration/autonomous_exploration_development_environment/src
+    - /bin/bash
+    - -c
+    - |
+      python /root/anylabeling-deploy/X-AnyLabeling/anylabeling/app.py
+      zsh

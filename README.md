@@ -4,7 +4,8 @@
 - add the dataset path in docker-compose.yml
 - for dependencies installation, please check the [Dockerfile_x](Dockerfile_x)
 ```bash
-cd docker && docker-compose up
+git clone --recursive https://github.com/Ea510chan/anylabeling-deploy.git
+cd anylabeling-deploy/docker && docker-compose up
 ```
 ## Modified Features for X-AnyLabeling
 - **Change to GPU:** et the __preferred_device__ field to GPU in the [app_info.py](X-AnyLabeling/anylabeling/app_info.py) configuration file.
