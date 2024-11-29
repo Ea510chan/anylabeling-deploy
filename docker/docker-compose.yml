@@ -2,7 +2,7 @@
 version: '3.8'
 services:
   x-anylabeling:
-    image: eachan10/x-anylabeling:sam2
+    image: eachan10/x-anylabeling:sam2-video
     shm_size: '64gb'
     container_name: x-anylabeling
     stdin_open: true # keeps the standard input of the container open and allows interaction with the terminal.
@@ -41,5 +41,7 @@ services:
     - /bin/bash
     - -c
     - |
+      pyrcc5 -o /root/anylabeling-deploy/X-AnyLabeling/anylabeling/resources/resources.py /root/anylabeling-deploy/X-AnyLabeling/anylabeling/resources/resources.qrc
+      echo "export PYTHONPATH=/root/anylabeling-deploy/X-AnyLabeling" >> ~/.zshrc
       python /root/anylabeling-deploy/X-AnyLabeling/anylabeling/app.py
       zsh
