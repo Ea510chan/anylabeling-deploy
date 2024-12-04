@@ -76,6 +76,8 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 # install pytorch and sam-2
 RUN pip install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 --index-url https://download.pytorch.org/whl/cu124
 
+WORKDIR /root
+
 RUN git clone https://github.com/CVHub520/segment-anything-2 \
     && cd segment-anything-2 \
     && pip install -e . \
@@ -89,11 +91,6 @@ COPY X-AnyLabeling/requirements-gpu.txt /root/requirements-gpu.txt
 
 RUN pip install -r /root/requirements-gpu.txt \
     && pip install labelme
-
-# RUN apt-get install -y qt5-default qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libgl1-mesa-glx \
-#     && rm -rf /var/lib/apt/lists/*
-# RUN pip install --upgrade pip setuptools wheel
-# RUN pip install 'protobuf<4,>=3.20.2' PyQt5==5.15.7
 
 RUN apt-get update && apt-get install -y \
     libgl1-mesa-glx \

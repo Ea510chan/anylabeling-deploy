@@ -36,12 +36,13 @@ services:
     devices: # Add the following devices to the container
       - /dev/dxg
     network_mode: host # Use the host network stack for the container
-    # command: zsh
     command:  # Run the command "zsh" in the container/home/yichen/my_prjs/collaborative_exploration/autonomous_exploration_development_environment/src
     - /bin/bash
     - -c
     - |
       pyrcc5 -o /root/anylabeling-deploy/X-AnyLabeling/anylabeling/resources/resources.py /root/anylabeling-deploy/X-AnyLabeling/anylabeling/resources/resources.qrc
       echo "export PYTHONPATH=/root/anylabeling-deploy/X-AnyLabeling" >> ~/.zshrc
+      echo "export PYTHONPATH=/root/anylabeling-deploy/X-AnyLabeling" >> ~/.bashrc
+      export PYTHONPATH=/root/anylabeling-deploy/X-AnyLabeling
       python /root/anylabeling-deploy/X-AnyLabeling/anylabeling/app.py
       zsh
